@@ -1,0 +1,29 @@
+{
+  "name": "devgen-test-seven-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/devgen-test-seven-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/devgen-test-seven-e2e/cypress.json",
+        "devServerTarget": "devgen-test-seven:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "devgen-test-seven:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/devgen-test-seven-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["devgen-test-seven"]
+}
